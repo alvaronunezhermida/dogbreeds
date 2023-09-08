@@ -5,6 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = false)
 data class BreedsResponseDTO(
-    @field:Json(name = "message") val message: List<String>? = null,
+    @field:Json(name = "message") val breeds: Map<String, List<String>>? = null,
     @field:Json(name = "status") val status: String? = null
 )
