@@ -12,8 +12,8 @@ sealed class ErrorEntry : Parcelable {
     ) : ErrorEntry()
 
     @Parcelize
-    data object NullParams : ErrorEntry()
+    object NullParams : ErrorEntry()
 
     @Parcelize
-    data object Unknown : ErrorEntry()
+    object Unknown : ErrorEntry()
 }

@@ -9,5 +9,5 @@ java {
 }
 
 dependencies {
-    api("io.arrow-kt:arrow-core:1.0.0")
+    api("io.arrow-kt:arrow-core:1.1.5")
 }

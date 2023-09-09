@@ -5,8 +5,9 @@ import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.domain.Error
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class BreedsRepository(
+class BreedsRepository @Inject constructor(
     private val breedsRemote: BreedsRemoteDataSource,
     //private val breedsLocal: BreedsLocalDataSource
 ) : BaseRepository() {

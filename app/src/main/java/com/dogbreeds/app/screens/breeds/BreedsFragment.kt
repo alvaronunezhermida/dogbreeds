@@ -7,7 +7,9 @@ import androidx.fragment.app.viewModels
 import com.dogbreeds.app.components.adapters.BreedsAdapter
 import com.dogbreeds.app.databinding.FragmentBreedsBinding
 import com.dogbreeds.app.screens.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BreedsFragment : BaseFragment<FragmentBreedsBinding, BreedsViewModel>() {
 
     override val viewModel: BreedsViewModel by viewModels()

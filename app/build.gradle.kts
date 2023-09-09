@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
-    kotlin("kapt")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -63,7 +63,7 @@ dependencies {
     //Android Libs
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
@@ -73,7 +73,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.46.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
-    kapt("com.google.dagger:hilt-compiler:2.41")
+    kapt("com.google.dagger:hilt-compiler:2.46.1")
 
     // Test Libs
     testImplementation("junit:junit:4.13.2")

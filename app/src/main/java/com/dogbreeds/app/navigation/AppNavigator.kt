@@ -1,6 +1,8 @@
 package com.dogbreeds.app.navigation
 
-class AppNavigator : ActivityNavigator() {
+import javax.inject.Inject
+
+class AppNavigator @Inject constructor() : ActivityNavigator() {
 
     //TODO: Implement action from breeds to breeds detail
 }

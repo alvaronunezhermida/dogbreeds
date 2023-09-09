@@ -3,10 +3,13 @@ package com.dogbreeds.app.screens.breeds
 import com.dogbreeds.app.navigation.AppNavigator
 import com.dogbreeds.app.screens.AppViewModel
 import com.dogbreeds.usecases.GetAllBreedsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class BreedsViewModel(
+@HiltViewModel
+class BreedsViewModel @Inject constructor(
     private val getAllBreedsUseCase: GetAllBreedsUseCase,
     appNavigator: AppNavigator
 ) : AppViewModel(appNavigator = appNavigator) {
@@ -17,10 +20,10 @@ class BreedsViewModel(
 
     override fun onStarted() {
         super.onStarted()
-        launchGetVertebras()
+        launchGetBreeds()
     }
 
-    private fun launchGetVertebras() {
+    private fun launchGetBreeds() {
         launch {
             getAllBreedsUseCase().collect { either ->
                 either.fold(

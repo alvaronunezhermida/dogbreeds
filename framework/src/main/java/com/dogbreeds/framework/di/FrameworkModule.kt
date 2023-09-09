@@ -2,6 +2,7 @@ package com.dogbreeds.framework.di
 
 import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.framework.remote.BreedsApi
+import com.dogbreeds.framework.remote.clients.BreedsClient
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -53,6 +54,12 @@ object FrameworkModule  {
             .create(BreedsApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(apiService: BreedsApi): BreedsRemoteDataSource {
+        return BreedsClient(apiService)
+    }
+
 }
 
 @Module
@@ -60,6 +67,6 @@ object FrameworkModule  {
 abstract class AppDataModule {
 
     @Binds
-    abstract fun bindBreedsRemoteDataSource(breedsRemoteDataSource: BreedsRemoteDataSource): BreedsRemoteDataSource
+    abstract fun provideRemoteDataSource(breedsRemoteDataSource: BreedsClient): BreedsRemoteDataSource
 
 }
