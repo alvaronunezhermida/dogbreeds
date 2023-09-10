@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object FrameworkModule  {
+object FrameworkModule {
 
     /*@Provides
     @Singleton
@@ -45,7 +45,7 @@ object FrameworkModule  {
 
     @Provides
     @Singleton
-    fun provideRemoteService(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): BreedsApi {
+    fun provideBreedsApi(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): BreedsApi {
         return Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)
@@ -56,9 +56,7 @@ object FrameworkModule  {
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource(apiService: BreedsApi): BreedsRemoteDataSource {
-        return BreedsClient(apiService)
-    }
+    fun provideBreedsClient(breedsApi: BreedsApi): BreedsRemoteDataSource = BreedsClient(breedsApi)
 
 }
 
@@ -67,6 +65,6 @@ object FrameworkModule  {
 abstract class AppDataModule {
 
     @Binds
-    abstract fun provideRemoteDataSource(breedsRemoteDataSource: BreedsClient): BreedsRemoteDataSource
+    abstract fun provideBreedsClient(breedsClient: BreedsClient): BreedsRemoteDataSource
 
 }

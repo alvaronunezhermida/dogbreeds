@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class BreedsRepository @Inject constructor(
-    private val breedsRemote: BreedsRemoteDataSource,
+    private val breedsRemoteDataSource: BreedsRemoteDataSource,
     //private val breedsLocal: BreedsLocalDataSource
 ) : BaseRepository() {
 
     fun getAllBreeds(): Flow<Either<Error, List<String>>> = doRun {
         flow {
-            emit(breedsRemote.getAllBreeds())
+            emit(breedsRemoteDataSource.getAllBreeds())
         }
     }
 

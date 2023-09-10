@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import com.dogbreeds.app.R
 import com.dogbreeds.app.components.adapters.BreedsAdapter
 import com.dogbreeds.app.databinding.FragmentBreedsBinding
 import com.dogbreeds.app.screens.BaseFragment
@@ -12,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class BreedsFragment : BaseFragment<FragmentBreedsBinding, BreedsViewModel>() {
 
-    override val viewModel: BreedsViewModel by viewModels()
+    override val viewModel: BreedsViewModel by hiltNavGraphViewModels(R.id.nav_graph)
 
     private lateinit var breedsAdapter: BreedsAdapter
 
