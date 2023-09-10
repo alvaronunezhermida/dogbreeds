@@ -1,8 +1,10 @@
-package com.dogbreeds.framework.di
+package com.dogbreeds.app.di
 
+import com.dogbreeds.app.navigation.AppNavigator
 import com.dogbreeds.data.source.BreedsRemoteDataSource
-import com.dogbreeds.framework.remote.BreedsApi
-import com.dogbreeds.framework.remote.clients.BreedsClient
+import com.dogbreeds.app.data_implementation.remote.BreedsApi
+import com.dogbreeds.app.data_implementation.remote.clients.BreedsClient
+import com.dogbreeds.app.navigation.ActivityNavigator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,25 +12,19 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
-object FrameworkModule {
-
-    /*@Provides
-    @Singleton
-    fun provideDatabase(app: Application) = Room.databaseBuilder(
-        app,
-        MovieDatabase::class.java,
-        "movie-db"
-    ).build()
+object AppModule {
 
     @Provides
     @Singleton
-    fun provideMovieDao(db: MovieDatabase) = db.movieDao()*/
+    fun provideAppNavigator(): AppNavigator {
+        return AppNavigator()
+    }
 
     @Provides
     @Singleton
@@ -48,7 +44,7 @@ object FrameworkModule {
         return Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(BreedsApi::class.java)
     }
@@ -57,5 +53,4 @@ object FrameworkModule {
     @Singleton
     fun provideBreedsRemoteDataSource(breedsClient: BreedsClient): BreedsRemoteDataSource =
         breedsClient
-
 }
