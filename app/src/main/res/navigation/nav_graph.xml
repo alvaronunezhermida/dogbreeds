@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_dest">
+
+    <fragment
+        android:id="@+id/main_dest"
+        android:name="com.devexperto.architectcoders.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/errorFragment"
+        android:name="com.dogbreeds.app.screens.error.ErrorFragment"
+        android:label="error_fragment"
+        tools:layout="@layout/fragment_error" />
+
+    <action
+        android:id="@+id/action_to_errorFragment"
+        app:destination="@id/errorFragment" />
+</navigation>

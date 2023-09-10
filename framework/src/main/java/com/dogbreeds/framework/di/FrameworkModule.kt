@@ -2,6 +2,7 @@ package com.dogbreeds.framework.di
 
 import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.framework.remote.BreedsApi
+import com.dogbreeds.framework.remote.clients.BreedsClient
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object FrameworkModule  {
+object FrameworkModule {
 
     /*@Provides
     @Singleton
@@ -44,7 +45,7 @@ object FrameworkModule  {
 
     @Provides
     @Singleton
-    fun provideRemoteService(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): BreedsApi {
+    fun provideBreedsApi(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): BreedsApi {
         return Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)
@@ -53,6 +54,10 @@ object FrameworkModule  {
             .create(BreedsApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideBreedsClient(breedsApi: BreedsApi): BreedsRemoteDataSource = BreedsClient(breedsApi)
+
 }
 
 @Module
@@ -60,6 +65,6 @@ object FrameworkModule  {
 abstract class AppDataModule {
 
     @Binds
-    abstract fun bindBreedsRemoteDataSource(breedsRemoteDataSource: BreedsRemoteDataSource): BreedsRemoteDataSource
+    abstract fun provideBreedsClient(breedsClient: BreedsClient): BreedsRemoteDataSource
 
 }

@@ -11,4 +11,7 @@ java {
 dependencies {
     implementation(project(":data", "default"))
     implementation(project(":domain", "default"))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("javax.inject:javax.inject:1")
 }
