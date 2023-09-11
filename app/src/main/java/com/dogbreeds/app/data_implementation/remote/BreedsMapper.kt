@@ -9,9 +9,9 @@ fun BreedsResponseDTO.toDomain(): List<String> {
             newList.add(breed.key)
         } else {
             breed.value.map {
-                newList.add("${breed.key} $it")
+                newList.add("$it ${breed.key}")
             }
         }
     }
-    return newList
+    return newList.sorted()
 }
