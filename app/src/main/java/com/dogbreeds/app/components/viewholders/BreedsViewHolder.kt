@@ -8,7 +8,10 @@ class BreedsViewHolder(
 ) : BaseViewHolder<String, ViewHolderBreedsBinding>(binding = binding) {
 
     override fun bind(item: String) {
-        binding.breedNameText.text = item
+        binding.root.setOnClickListener { onBreedClicked(item) }
+
+        val breedName = item.split(" ").joinToString(" ") { it.replaceFirstChar { firstChar -> firstChar.uppercase() } }
+        binding.breedNameText.text = breedName
     }
 
 }

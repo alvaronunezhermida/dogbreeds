@@ -1,4 +1,4 @@
-package com.dogbreeds.framework.di
+package com.dogbreeds.app.di
 
 import javax.inject.Qualifier
 

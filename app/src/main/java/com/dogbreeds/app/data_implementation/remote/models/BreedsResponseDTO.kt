@@ -1,4 +1,4 @@
-package com.dogbreeds.framework.remote.models
+package com.dogbreeds.app.data_implementation.remote.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

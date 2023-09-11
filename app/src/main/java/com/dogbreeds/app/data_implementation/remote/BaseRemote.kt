@@ -1,4 +1,4 @@
-package com.dogbreeds.framework.remote
+package com.dogbreeds.app.data_implementation.remote
 
 import arrow.core.Either
 import arrow.core.left

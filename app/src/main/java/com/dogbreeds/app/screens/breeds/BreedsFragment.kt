@@ -3,7 +3,6 @@ package com.dogbreeds.app.screens.breeds
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.dogbreeds.app.R
 import com.dogbreeds.app.components.adapters.BreedsAdapter

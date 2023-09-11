@@ -10,10 +10,12 @@ import com.dogbreeds.app.R
 import com.dogbreeds.app.mappers.toEntry
 import com.dogbreeds.app.screens.error.ErrorArgs
 import com.dogbreeds.domain.Error
+import javax.inject.Inject
 
 abstract class ActivityNavigator : BaseNavigator() {
 
-    private lateinit var activity: AppCompatActivity
+    @Inject
+    lateinit var activity: AppCompatActivity
 
     private val navController: NavController? get() = activity.supportFragmentManager.primaryNavigationFragment?.findNavController()
 

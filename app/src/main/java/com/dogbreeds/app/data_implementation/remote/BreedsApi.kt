@@ -1,6 +1,6 @@
-package com.dogbreeds.framework.remote
+package com.dogbreeds.app.data_implementation.remote
 
-import com.dogbreeds.framework.remote.models.BreedsResponseDTO
+import com.dogbreeds.app.data_implementation.remote.models.BreedsResponseDTO
 import retrofit2.Response
 import retrofit2.http.GET
 

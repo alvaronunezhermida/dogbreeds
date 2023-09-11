@@ -13,8 +13,8 @@ dependencies {
 
     //Kotlin Libs
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
 
     //Libs
     implementation("javax.inject:javax.inject:1")
