@@ -8,6 +8,7 @@ import com.dogbreeds.app.R
 import com.dogbreeds.app.components.adapters.BreedsAdapter
 import com.dogbreeds.app.databinding.FragmentBreedsBinding
 import com.dogbreeds.app.screens.BaseFragment
+import com.dogbreeds.domain.Breed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +40,7 @@ class BreedsFragment : BaseFragment<FragmentBreedsBinding, BreedsViewModel>() {
         binding.breedsRecycler.adapter = breedsAdapter
     }
 
-    private fun observeBreeds(breeds: List<String>) {
+    private fun observeBreeds(breeds: List<Breed>) {
         breedsAdapter.submitList(breeds)
         binding.emptyState.root.isVisible = breeds.isEmpty()
         binding.breedsRecycler.isVisible = breeds.isNotEmpty()
