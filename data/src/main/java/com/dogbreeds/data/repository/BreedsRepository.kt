@@ -2,7 +2,6 @@ package com.dogbreeds.data.repository
 
 import arrow.core.Either
 import arrow.core.left
-import arrow.core.right
 import com.dogbreeds.data.source.BreedsLocalDataSource
 import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.domain.Breed
@@ -18,11 +17,11 @@ class BreedsRepository @Inject constructor(
     private val breedsLocalDataSource: BreedsLocalDataSource
 ) : BaseRepository() {
 
-    val breeds: Flow<List<Breed>> = breedsLocalDataSource.breeds
+    val breeds: Flow<List<Breed>> get() = breedsLocalDataSource.breeds
 
     fun loadAllBreeds(): Flow<Either<Error, Empty>> = doRun {
         flow {
-            if(breedsLocalDataSource.isBreedsListEmpty()) {
+            if (breedsLocalDataSource.isBreedsListEmpty()) {
                 val breeds = breedsRemoteDataSource.getAllBreeds()
                 breeds.fold(
                     ifLeft = { emit(Error.Unknown.left()) },
@@ -32,10 +31,11 @@ class BreedsRepository @Inject constructor(
         }
     }
 
-    fun getBreedImages(breedName: String, quantity: Int): Flow<Either<Error, List<BreedImage>>> = doRun {
-        flow {
-            emit(breedsRemoteDataSource.getBreedImages(breedName, quantity))
+    fun getBreedImages(breedName: String, quantity: Int): Flow<Either<Error, List<BreedImage>>> =
+        doRun {
+            flow {
+                emit(breedsRemoteDataSource.getBreedImages(breedName, quantity))
+            }
         }
-    }
 
 }
