@@ -1,10 +1,15 @@
 package com.dogbreeds.app.di
 
+import android.app.Application
+import androidx.room.Room
+import com.dogbreeds.app.data_implementation.local.BreedDatabase
+import com.dogbreeds.app.data_implementation.local.BreedRoomDataSource
 import com.dogbreeds.app.navigation.AppNavigator
 import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.app.data_implementation.remote.BreedsApi
 import com.dogbreeds.app.data_implementation.remote.clients.BreedsClient
 import com.dogbreeds.app.navigation.ActivityNavigator
+import com.dogbreeds.data.source.BreedsLocalDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +33,18 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideDatabase(app: Application) = Room.databaseBuilder(
+        app,
+        BreedDatabase::class.java,
+        "breeds-db"
+    ).build()
+
+    @Provides
+    @Singleton
+    fun provideBreedDao(db: BreedDatabase) = db.breedDao()
+
+    @Provides
+    @Singleton
     @ApiUrl
     fun provideApiUrl(): String = "https://dog.ceo/api/"
 
@@ -48,6 +65,11 @@ object AppModule {
             .build()
             .create(BreedsApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideBreedsLocalDataSource(breedsRoomDataSource: BreedRoomDataSource): BreedsLocalDataSource =
+        breedsRoomDataSource
 
     @Provides
     @Singleton

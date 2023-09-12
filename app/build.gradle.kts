@@ -60,6 +60,8 @@ dependencies {
     implementation(project(":usecases", "default"))
 
     //Android Libs
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -77,13 +79,16 @@ dependencies {
     //Libs
     implementation("com.google.dagger:hilt-android:2.46.1")
     implementation("io.coil-kt:coil-compose:1.4.0")
-    kapt("com.google.dagger:hilt-compiler:2.46.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    //Kapt Libs
+    kapt("androidx.room:room-compiler:2.5.2")
+    kapt("com.google.dagger:hilt-compiler:2.46.1")
 
     // Test Libs
     testImplementation("junit:junit:4.13.2")
