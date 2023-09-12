@@ -10,7 +10,6 @@ import com.dogbreeds.usecases.GetBreedImagesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,15 +23,25 @@ class BreedImagesViewModel @Inject constructor(
     val breedImagesState: StateFlow<List<BreedImage>>
         get() = breedImagesMutableState
 
+    private val screenTitleMutableState = MutableStateFlow<String?>(null)
+    val screenTitleState: StateFlow<String?>
+        get() = screenTitleMutableState
+
     override fun onStarted() {
         super.onStarted()
         launchGetBreedImages()
     }
 
     private fun launchGetBreedImages() {
-        state.get<String>(ARG_KEY)?.let {breedName ->
+        state.get<String>(ARG_KEY)?.let { breedName ->
+            screenTitleMutableState.value = breedName
             launch {
-                getBreedImagesUseCase(GetBreedImagesUseCase.Params(breedName, 10)).collect { either ->
+                getBreedImagesUseCase(
+                    GetBreedImagesUseCase.Params(
+                        breedName,
+                        10
+                    )
+                ).collect { either ->
                     either.fold(
                         ifLeft = { error ->
                             appNavigator.toError(error)
@@ -44,7 +53,11 @@ class BreedImagesViewModel @Inject constructor(
 
                 }
             }
-        }?: appNavigator.toError(Error.NullParams)
+        } ?: appNavigator.toError(Error.NullParams)
+    }
+
+    fun onToolbarNavigationClicked() {
+        appNavigator.goBack()
     }
 
 }

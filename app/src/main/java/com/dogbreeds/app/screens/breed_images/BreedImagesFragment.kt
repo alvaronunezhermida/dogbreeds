@@ -3,45 +3,58 @@ package com.dogbreeds.app.screens.breed_images
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.fragment.app.viewModels
 import com.dogbreeds.app.R
 import com.dogbreeds.app.components.adapters.BreedImagesAdapter
-import com.dogbreeds.app.databinding.FragmentBreedsBinding
+import com.dogbreeds.app.databinding.FragmentBreedImagesBinding
 import com.dogbreeds.app.screens.BaseFragment
 import com.dogbreeds.domain.BreedImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BreedImagesFragment : BaseFragment<FragmentBreedsBinding, BreedImagesViewModel>() {
+class BreedImagesFragment : BaseFragment<FragmentBreedImagesBinding, BreedImagesViewModel>() {
 
-    override val viewModel: BreedImagesViewModel by hiltNavGraphViewModels(R.id.nav_graph)
+    override val viewModel: BreedImagesViewModel by viewModels()
 
     private lateinit var breedImagesAdapter: BreedImagesAdapter
 
     override fun initBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentBreedsBinding = FragmentBreedsBinding.inflate(inflater, container, false)
+    ): FragmentBreedImagesBinding = FragmentBreedImagesBinding.inflate(inflater, container, false)
 
     override fun initViews() {
         super.initViews()
+        initToolbar()
         initBreedImagesList()
     }
 
     override fun initObservers() {
         super.initObservers()
         launchWhenStarted { viewModel.breedImagesState.collect(::observeBreeds) }
+        launchWhenStarted { viewModel.screenTitleState.collect(::observeScreenTitle) }
+    }
+
+    private fun initToolbar() {
+        binding.toolbar.setNavigationOnClickListener { viewModel.onToolbarNavigationClicked() }
     }
 
     private fun initBreedImagesList() {
-        binding.breedsRecycler.setHasFixedSize(true)
+        binding.breedImagesRecycler.setHasFixedSize(true)
         breedImagesAdapter = BreedImagesAdapter()
-        binding.breedsRecycler.adapter = breedImagesAdapter
+        binding.breedImagesRecycler.adapter = breedImagesAdapter
     }
 
     private fun observeBreeds(breedImages: List<BreedImage>) {
         breedImagesAdapter.submitList(breedImages)
         binding.emptyState.root.isVisible = breedImages.isEmpty()
-        binding.breedsRecycler.isVisible = breedImages.isNotEmpty()
+        binding.breedImagesRecycler.isVisible = breedImages.isNotEmpty()
+    }
+
+    private fun observeScreenTitle(breedName: String?) {
+        val upperCaseBreedName = breedName?.split(" ")
+            ?.joinToString(" ") { it.replaceFirstChar { firstChar -> firstChar.uppercase() } }
+        binding.toolbar.title =
+            upperCaseBreedName ?: requireContext().getString(R.string.breed_images)
     }
 }

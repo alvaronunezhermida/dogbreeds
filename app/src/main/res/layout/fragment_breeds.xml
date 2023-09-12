@@ -4,6 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+         android:id="@+id/breedsAppBar"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="?attr/colorPrimary"
+        android:theme="@style/Theme.NavigationDrawerExample.AppBarOverlay"
+         android:orientation="vertical"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent">
+
+         <com.google.android.material.appbar.MaterialToolbar
+             android:id="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+             android:theme="@style/Theme.NavigationDrawerExample.AppBarOverlay"
+             app:title="@string/app_name"/>
+
+     </com.google.android.material.appbar.AppBarLayout>
+
     <include
         android:id="@+id/empty_state"
         layout="@layout/view_empty_state" />
