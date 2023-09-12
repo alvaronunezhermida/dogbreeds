@@ -4,12 +4,11 @@ import android.app.Application
 import androidx.room.Room
 import com.dogbreeds.app.data_implementation.local.BreedDatabase
 import com.dogbreeds.app.data_implementation.local.BreedRoomDataSource
-import com.dogbreeds.app.navigation.AppNavigator
-import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.app.data_implementation.remote.BreedsApi
 import com.dogbreeds.app.data_implementation.remote.clients.BreedsClient
-import com.dogbreeds.app.navigation.ActivityNavigator
+import com.dogbreeds.app.navigation.AppNavigator
 import com.dogbreeds.data.source.BreedsLocalDataSource
+import com.dogbreeds.data.source.BreedsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +17,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module

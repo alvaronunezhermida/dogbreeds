@@ -3,9 +3,8 @@ package com.dogbreeds.app.screens.error
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.dogbreeds.app.R
 import com.dogbreeds.app.databinding.FragmentErrorBinding
 import com.dogbreeds.app.mappers.toDomain
@@ -15,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ErrorFragment : BaseDialog<FragmentErrorBinding, ErrorViewModel>() {
 
-    override val viewModel: ErrorViewModel by hiltNavGraphViewModels(R.id.nav_graph)
+    override val viewModel: ErrorViewModel by viewModels()
     private val entry: ErrorEntry
         get() = arguments?.getParcelable(ErrorArgs.ENTRY)
             ?: ErrorEntry.Unknown

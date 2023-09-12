@@ -1,6 +1,8 @@
+import com.dogbreeds.buildsrc.Libs
+
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 java {
@@ -9,5 +11,5 @@ java {
 }
 
 dependencies {
-    api("io.arrow-kt:arrow-core:1.1.5")
+    api Libs.Arrow.core
 }
