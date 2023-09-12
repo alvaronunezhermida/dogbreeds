@@ -3,17 +3,17 @@ package com.dogbreeds.app.screens.breeds
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import com.dogbreeds.app.R
+import androidx.fragment.app.viewModels
 import com.dogbreeds.app.components.adapters.BreedsAdapter
 import com.dogbreeds.app.databinding.FragmentBreedsBinding
 import com.dogbreeds.app.screens.BaseFragment
+import com.dogbreeds.domain.Breed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BreedsFragment : BaseFragment<FragmentBreedsBinding, BreedsViewModel>() {
 
-    override val viewModel: BreedsViewModel by hiltNavGraphViewModels(R.id.nav_graph)
+    override val viewModel: BreedsViewModel by viewModels()
 
     private lateinit var breedsAdapter: BreedsAdapter
 
@@ -39,7 +39,7 @@ class BreedsFragment : BaseFragment<FragmentBreedsBinding, BreedsViewModel>() {
         binding.breedsRecycler.adapter = breedsAdapter
     }
 
-    private fun observeBreeds(breeds: List<String>) {
+    private fun observeBreeds(breeds: List<Breed>) {
         breedsAdapter.submitList(breeds)
         binding.emptyState.root.isVisible = breeds.isEmpty()
         binding.breedsRecycler.isVisible = breeds.isNotEmpty()

@@ -4,15 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.dogbreeds.app.components.diffs.BreedsDiff
-import com.dogbreeds.app.components.viewholders.BreedsViewHolder
+import com.dogbreeds.app.components.viewholders.BreedViewHolder
 import com.dogbreeds.app.databinding.ViewHolderBreedsBinding
+import com.dogbreeds.domain.Breed
 
 class BreedsAdapter(
-    private val onBreedClicked: (String) -> Unit,
-) : ListAdapter<String, BreedsViewHolder>(BreedsDiff()) {
+    private val onBreedClicked: (Breed) -> Unit,
+) : ListAdapter<Breed, BreedViewHolder>(BreedsDiff()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedsViewHolder =
-        BreedsViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolder =
+        BreedViewHolder(
             onBreedClicked = onBreedClicked,
             binding = ViewHolderBreedsBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -22,7 +23,7 @@ class BreedsAdapter(
         )
 
 
-    override fun onBindViewHolder(holder: BreedsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BreedViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 }
