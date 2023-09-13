@@ -51,6 +51,7 @@ object Libs {
             const val uiGraphics = "androidx.compose.ui:ui-graphics"
             const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
             const val material3 = "androidx.compose.material3:material3"
+            const val uiTest = "androidx.compose.ui:ui-test-junit4:1.5.1"
         }
 
         object Room {
@@ -61,6 +62,10 @@ object Libs {
         }
 
         object Test {
+            private const val version = "1.5.0"
+            const val runner = "androidx.test:runner:$version"
+            const val rules = "androidx.test:rules:$version"
+
             object Ext {
                 private const val version = "1.1.5"
                 const val junit = "androidx.test.ext:junit:$version"
@@ -68,6 +73,7 @@ object Libs {
             object Espresso{
                 private const val version="3.5.1"
                 const val core = "androidx.test.espresso:espresso-core:$version"
+                const val contrib = "androidx.test.espresso:espresso-contrib:$version"
             }
         }
     }
@@ -81,6 +87,7 @@ object Libs {
         private const val version = "4.11.0"
         const val okhttp3 = "com.squareup.okhttp3:okhttp:$version"
         const val loginInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
     }
 
     object Retrofit {
@@ -99,6 +106,7 @@ object Libs {
         const val android = "com.google.dagger:hilt-android:$version"
         const val compiler = "com.google.dagger:hilt-compiler:$version"
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
+        const val test = "com.google.dagger:hilt-android-testing:$version"
     }
 
     object JUnit {
