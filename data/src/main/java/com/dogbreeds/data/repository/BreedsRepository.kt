@@ -2,6 +2,7 @@ package com.dogbreeds.data.repository
 
 import arrow.core.Either
 import arrow.core.left
+import arrow.core.right
 import com.dogbreeds.data.source.BreedsLocalDataSource
 import com.dogbreeds.data.source.BreedsRemoteDataSource
 import com.dogbreeds.domain.Breed
@@ -25,8 +26,13 @@ class BreedsRepository @Inject constructor(
                 val breeds = breedsRemoteDataSource.getAllBreeds()
                 breeds.fold(
                     ifLeft = { emit(Error.Unknown.left()) },
-                    ifRight = { breedsLocalDataSource.saveBreeds(it) }
+                    ifRight = {
+                        breedsLocalDataSource.saveBreeds(it)
+                        emit(Empty().right())
+                    }
                 )
+            }else{
+                emit(Empty().right())
             }
         }
     }

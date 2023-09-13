@@ -5,13 +5,14 @@ package com.dogbreeds.buildsrc
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:8.0.2"
     const val timber = "com.jakewharton.timber:timber:5.0.1"
+    const val turbine = "app.cash.turbine:turbine:1.0.0"
 
     object Kotlin {
         private const val version = "1.8.10"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
 
         object Coroutines {
-            private const val version = "1.7.1"
+            private const val version = "1.7.3"
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
         }
@@ -31,7 +32,7 @@ object Libs {
         }
 
         object Lifecycle {
-            private const val version = "2.6.1"
+            private const val version = "2.6.2"
             const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
             const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
         }
@@ -106,7 +107,7 @@ object Libs {
     }
 
     object Mockito {
-        const val kotlin = "org.mockito.kotlin:mockito-kotlin:5.0.0"
+        const val kotlin = "org.mockito.kotlin:mockito-kotlin:5.1.0"
         const val inline = "org.mockito:mockito-inline:5.2.0"
     }
 
