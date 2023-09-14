@@ -5,7 +5,10 @@ This project probably doesn't need this overengineering, it is just an example o
 
 ## Screenshots
 
-![Alt text](README_FILES/breeds-screen.jpg?raw=true "Breeds Screen") ![Alt text](README_FILES/breeds-screen.jpg?raw=true "Breed Images Screen")
+<div style="display: flex;">
+    <img src="README_FILES/breeds-screen.jpg" alt="Breeds Screen" style="width: 35%; height: auto;">
+    <img src="README_FILES/breed-images-screen.jpg" alt="Breed Images Screen" style="width: 35%; height: auto;">
+</div>
 
 ## Clean Architecture Layers
 
