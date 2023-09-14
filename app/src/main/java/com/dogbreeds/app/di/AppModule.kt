@@ -19,6 +19,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+/**
+ * Dagger Hilt module that provides dependencies for various components of the application.
+ *
+ * This module is responsible for defining and providing singleton-scoped dependencies used within the application.
+ * These dependencies include services, data sources, network clients, and more.
+ *
+ * @see Module
+ * @see InstallIn
+ * @see SingletonComponent
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {

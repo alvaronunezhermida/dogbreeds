@@ -13,6 +13,15 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * A base ViewModel class that provides common functionality for managing coroutines and error handling.
+ *
+ * This class serves as a foundation for implementing ViewModel classes within your Android application.
+ *
+ * @param job The [SupervisorJob] responsible for managing the lifecycle of coroutines in this ViewModel.
+ * @param dispatcher The [CoroutineContext] defining the context in which coroutines are executed, defaulting to the main thread.
+ * @param exceptionHandler The optional [CoroutineExceptionHandler] to handle exceptions thrown in coroutines.
+ */
 open class BaseViewModel(
     private val job: Job = SupervisorJob(),
     private val dispatcher: CoroutineContext = Dispatchers.Main,

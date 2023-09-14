@@ -3,7 +3,6 @@ package com.dogbreeds.app.navigation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.dogbreeds.app.R
@@ -12,6 +11,14 @@ import com.dogbreeds.app.screens.error.ErrorArgs
 import com.dogbreeds.domain.Error
 import javax.inject.Inject
 
+/**
+ * An abstract base class for implementing navigation within Android activities.
+ *
+ * This class serves as a foundation for handling navigation within activities by providing common navigation functionality.
+ *
+ * @see BaseNavigator
+ * @property activity The [AppCompatActivity] associated with this navigator.
+ */
 abstract class ActivityNavigator : BaseNavigator() {
 
     @Inject
@@ -29,10 +36,6 @@ abstract class ActivityNavigator : BaseNavigator() {
         navController?.navigate(id, args, navOptions)
     }
 
-    protected fun goTo(directions: NavDirections) {
-        navController?.navigate(directions)
-    }
-
     fun toError(error: Error) {
         goTo(
             id = R.id.action_to_errorFragment,
@@ -46,10 +49,6 @@ abstract class ActivityNavigator : BaseNavigator() {
         if (navController?.popBackStack() != true) {
             activity.finish()
         }
-    }
-
-    fun goBack(destination: Int, inclusive: Boolean) {
-        navController?.popBackStack(destination, inclusive)
     }
 
 }
