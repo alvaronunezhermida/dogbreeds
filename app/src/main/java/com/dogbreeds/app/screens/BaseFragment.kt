@@ -38,11 +38,16 @@ abstract class BaseFragment<out VB : ViewBinding, out VM : BaseViewModel> : Frag
         super.onViewCreated(view, savedInstanceState)
         savedInstanceState?.run { initInstance(savedInstanceState = this) }
         initViews()
+        initObservers()
     }
 
     protected open fun initInstance(savedInstanceState: Bundle) = Unit
 
     protected open fun initViews() = Unit
+
+    protected open fun initObservers() {
+
+    }
 
     protected fun launchWhenCreated(body: suspend CoroutineScope.() -> Unit) {
         lifecycleScope.launchWhenCreated(body)

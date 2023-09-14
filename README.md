@@ -1,9 +1,11 @@
 # DogBreeds - Clean Architecture and MVVM
 This project probably doesn't need this overengineering, it is just an example of clean architecture and MVVM pattern written in kotlin. It is a simple app that shows a list of dog breeds and their images. The data is retrieved from the [Dog API](https://dog.ceo/dog-api/).
 
+[**Project Repository**](https://github.com/alvaronunezhermida/dogbreeds)
+
 ## Screenshots
 
-![Alt text](README_FILES/breeds-screen.png?raw=true "Breeds Screen")|![Alt text](README_FILES/breeds-screen.png?raw=true "Breed Images Screen")
+![Alt text](README_FILES/breeds-screen.jpg?raw=true "Breeds Screen") ![Alt text](README_FILES/breeds-screen.jpg?raw=true "Breed Images Screen")
 
 ## Clean Architecture Layers
 
