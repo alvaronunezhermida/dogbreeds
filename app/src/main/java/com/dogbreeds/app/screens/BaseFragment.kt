@@ -9,6 +9,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import kotlinx.coroutines.CoroutineScope
 
+/**
+ * An abstract base class for creating fragments with ViewBinding and ViewModel support.
+ *
+ * This class simplifies the creation of Android fragments by providing common functionality for handling ViewBinding, ViewModel integration, lifecycle events, and coroutines.
+ *
+ * @param VB The type of ViewBinding associated with the fragment.
+ * @param VM The type of ViewModel associated with the fragment.
+ */
 abstract class BaseFragment<out VB : ViewBinding, out VM : BaseViewModel> : Fragment() {
 
     private var _binding: VB? = null
@@ -38,7 +46,7 @@ abstract class BaseFragment<out VB : ViewBinding, out VM : BaseViewModel> : Frag
     protected open fun initViews() = Unit
 
     protected open fun initObservers() {
-        //launchWhenStarted { viewModel.fullscreenLoaderState.collect(::observeFullscreenLoader) }
+
     }
 
     protected fun launchWhenCreated(body: suspend CoroutineScope.() -> Unit) {
