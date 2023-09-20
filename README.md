@@ -64,3 +64,5 @@ This project probably doesn't need this overengineering, it is just an example o
 - Add search on the breeds list scene
 - Add refresh button on the breed random images
 - Make breed image bigger when tapping it
+- Implement Crashlytics
+- Implement Analytics
